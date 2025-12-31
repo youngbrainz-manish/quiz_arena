@@ -41,7 +41,7 @@ class AppTheme {
       onSurface: Colors.black,
     ),
     cardColor: Colors.grey,
-    scaffoldBackgroundColor: Colors.blue.withValues(alpha: 0.1),
+    scaffoldBackgroundColor: Colors.blueGrey,
     appBarTheme: const AppBarTheme(backgroundColor: Colors.black, foregroundColor: Colors.white, centerTitle: true),
     cardTheme: const CardThemeData(elevation: 6, shadowColor: Colors.white),
     bottomNavigationBarTheme: BottomNavigationBarThemeData().copyWith(
