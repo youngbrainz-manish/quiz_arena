@@ -5,7 +5,7 @@ import 'package:quiz_app/ui/screens/home/home_controller.dart';
 import 'package:quiz_app/ui/widgets/common_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -38,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
         }
 
         return GridView.builder(
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.all(12),
           itemCount: homeController.categories.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: EdgeInsets.all(12),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8),
                       Text(
                         "${item.count} Questions",
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),

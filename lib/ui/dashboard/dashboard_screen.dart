@@ -11,7 +11,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(DashboardController());
 
-    final screens = [const HomeScreen(), const SettingScreen()];
+    final screens = [HomeScreen(), SettingScreen()];
 
     return Obx(
       () => Scaffold(

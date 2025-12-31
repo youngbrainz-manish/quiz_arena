@@ -5,7 +5,7 @@ import 'package:quiz_app/core/translation/translation_keys.dart';
 import 'setting_controller.dart';
 
 class SettingScreen extends GetView<SettingController> {
-  const SettingScreen({super.key});
+  SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class SettingScreen extends GetView<SettingController> {
                 child: ListTile(
                   leading: CircleAvatar(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Text((settingController.selectedLanguage['code'] ?? '')),
                     ),
                   ),
@@ -49,11 +49,11 @@ class SettingScreen extends GetView<SettingController> {
                 child: ListTile(
                   leading: CircleAvatar(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Icon(themeController.isDark.value == true ? Icons.dark_mode : Icons.sunny),
                     ),
                   ),
-                  title: Text(TranslationKeys.changeTheme.tr, style: const TextStyle(fontSize: 22)),
+                  title: Text(TranslationKeys.changeTheme.tr, style: TextStyle(fontSize: 22)),
                   trailing: Switch(
                     value: themeController.isDark.value,
                     onChanged: (value) {
@@ -95,14 +95,10 @@ class SettingScreen extends GetView<SettingController> {
         children: [
           Text(
             "${TranslationKeys.selected.tr} ${TranslationKeys.language.tr}",
-            style: const TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: 13),
             textAlign: TextAlign.center,
           ),
-          Text(
-            " ${controller.selectedLanguage['name']}",
-            style: const TextStyle(fontSize: 15),
-            textAlign: TextAlign.center,
-          ),
+          Text(" ${controller.selectedLanguage['name']}", style: TextStyle(fontSize: 15), textAlign: TextAlign.center),
         ],
       );
     });
