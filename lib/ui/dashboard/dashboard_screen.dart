@@ -19,7 +19,6 @@ class DashboardScreen extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: controller.currentIndex.value,
           onTap: controller.changeTab,
-          // selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),

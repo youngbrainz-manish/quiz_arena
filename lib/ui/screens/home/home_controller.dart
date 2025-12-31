@@ -31,4 +31,8 @@ class HomeController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  updateState() {
+    update();
+  }
 }

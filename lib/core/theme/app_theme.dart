@@ -17,7 +17,7 @@ class AppTheme {
       foregroundColor: Colors.black,
       centerTitle: true,
     ),
-    cardTheme: const CardThemeData(elevation: 6, shadowColor: Colors.black),
+    cardTheme: CardThemeData(elevation: 6, shadowColor: Colors.black),
     bottomNavigationBarTheme: BottomNavigationBarThemeData().copyWith(
       backgroundColor: Color.fromARGB(255, 0, 255, 242),
       selectedIconTheme: IconThemeData().copyWith(color: Colors.black),
@@ -43,7 +43,7 @@ class AppTheme {
     cardColor: Colors.grey,
     scaffoldBackgroundColor: Colors.blueGrey,
     appBarTheme: const AppBarTheme(backgroundColor: Colors.black, foregroundColor: Colors.white, centerTitle: true),
-    cardTheme: const CardThemeData(elevation: 6, shadowColor: Colors.white),
+    cardTheme: CardThemeData(elevation: 6, shadowColor: Colors.white),
     bottomNavigationBarTheme: BottomNavigationBarThemeData().copyWith(
       backgroundColor: Colors.black,
       selectedIconTheme: IconThemeData().copyWith(color: Colors.white),

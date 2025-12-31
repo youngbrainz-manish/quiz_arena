@@ -5,5 +5,6 @@ class DashboardController extends GetxController {
 
   void changeTab(int index) {
     currentIndex.value = index;
+    update();
   }
 }
