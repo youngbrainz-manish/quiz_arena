@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:quiz_app/core/services/notification_service.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/core/theme/theme_controller.dart';
 import 'package:quiz_app/core/translation/message.dart';
@@ -14,6 +15,7 @@ import 'package:quiz_app/ui/screens/setting/setting_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService.init();
   await GetStorage.init();
   Get.put(ThemeController());
   runApp(const MyApp());

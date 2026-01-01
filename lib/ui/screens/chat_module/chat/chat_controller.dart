@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/core/models/chat_message.dart';
 import 'package:quiz_app/core/services/ably_service.dart';
+import 'package:quiz_app/core/services/notification_service.dart';
 
 class ChatController extends GetxController {
   ChatController({required this.currentUserId, required this.chatRoomId});
@@ -57,6 +58,9 @@ class ChatController extends GetxController {
     _messageSub = channel.subscribe(name: 'message').listen((ably.Message msg) {
       final chat = ChatMessage.fromMap(msg.data as Map);
       messages.add(chat);
+      final title = chat.senderId;
+      final body = chat.text;
+      NotificationService.show(title: title, body: body);
       _scrollToBottom();
     });
   }
