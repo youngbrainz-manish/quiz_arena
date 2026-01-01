@@ -22,14 +22,12 @@ class _QuizScreenState extends State<QuizScreen> {
         title: Obx(
           () => Row(
             children: [
-              Text(
-                quizController.item.value?.id ?? "Quiz Screen",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              Spacer(),
-              Text(
-                "Total: ${quizController.questions.length.toString()}",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Expanded(
+                child: Text(
+                  quizController.item.value?.id ?? "Quiz Screen",
+                  style: TextStyle().copyWith(fontSize: 22, fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),
@@ -55,35 +53,43 @@ class _QuizScreenState extends State<QuizScreen> {
                   decoration: BoxDecoration(),
                   child: Container(
                     decoration: BoxDecoration(),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
+                    child: Column(
                       children: [
-                        Text("Level-: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-                        Spacer(),
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 8),
-                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-                          decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(8)),
-                          child: DropdownButton<String>(
-                            icon: Icon(Icons.keyboard_arrow_down_rounded, size: 30),
-                            underline: SizedBox(),
-                            value: quizController.selectedDifficulty.value,
-                            items: quizController.difficulty.map((level) {
-                              return DropdownMenuItem<String>(
-                                value: level,
-                                child: Text(
-                                  level.capitalizeFirst!,
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              if (value != null) {
-                                quizController.selectedDifficulty.value = value;
-                                quizController.getQuizData(id: quizController.item.value?.id ?? '');
-                              }
-                            },
-                          ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // Text("Level-: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+                            Text(
+                              "Total: ${quizController.questions.length.toString()}",
+                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            Spacer(),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 8),
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(8)),
+                              child: DropdownButton<String>(
+                                icon: Icon(Icons.keyboard_arrow_down_rounded, size: 30),
+                                underline: SizedBox(),
+                                value: quizController.selectedDifficulty.value,
+                                items: quizController.difficulty.map((level) {
+                                  return DropdownMenuItem<String>(
+                                    value: level,
+                                    child: Text(
+                                      level.capitalizeFirst!,
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    quizController.selectedDifficulty.value = value;
+                                    quizController.getQuizData(id: quizController.item.value?.id ?? '');
+                                  }
+                                },
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

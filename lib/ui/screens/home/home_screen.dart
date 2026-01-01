@@ -18,7 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(TranslationKeys.quizCategory.tr, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+        title: Text(
+          TranslationKeys.quizCategory.tr,
+          style: TextStyle().copyWith(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SafeArea(child: _buildBody(context: context)),
     );
@@ -37,33 +40,45 @@ class _HomeScreenState extends State<HomeScreen> {
           return Text(homeController.error.value);
         }
         return ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           itemCount: homeController.categories.length,
           itemBuilder: (context, index) {
             final item = homeController.categories[index];
-            return Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
-              child: GestureDetector(
-                onTap: () {
-                  Get.toNamed("/quizScreenRoute", arguments: item);
-                },
-                child: Card(
-                  child: ListTile(
-                    contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                    leading: CircleAvatar(child: Text("${index + 1}")),
-                    title: Text(
-                      item.id,
-                      textAlign: TextAlign.left,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+            return GestureDetector(
+              onTap: () {
+                Get.toNamed("/quizScreenRoute", arguments: item);
+              },
+              child: Card(
+                child: ListTile(
+                  contentPadding: EdgeInsets.only(left: 8, right: 8),
+                  leading: CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                    child: Text(
+                      "${index + 1}",
+                      style: TextStyle().copyWith(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    subtitle: Text(
-                      "${item.count} Questions",
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.normal, height: 1.4),
+                  ),
+                  title: Text(
+                    item.id,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    "${item.count} Questions",
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.normal, height: 1.4),
+                  ),
+                  trailing: CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                    child: Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      size: 20,
                     ),
-                    trailing: CircleAvatar(child: Icon(Icons.arrow_forward_ios_rounded)),
                   ),
                 ),
               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
-    useMaterial3: false,
+    useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light(
       primary: Color.fromARGB(255, 0, 255, 242),
@@ -32,13 +32,13 @@ class AppTheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    useMaterial3: false,
+    useMaterial3: true,
     brightness: Brightness.dark,
     colorScheme: const ColorScheme.dark(
       primary: Colors.white,
       surface: Color(0xFF1E1E1E),
       onPrimary: Colors.black,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     cardColor: Colors.grey,
     scaffoldBackgroundColor: Colors.blueGrey,

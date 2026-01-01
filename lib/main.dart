@@ -6,6 +6,8 @@ import 'package:quiz_app/core/theme/theme_controller.dart';
 import 'package:quiz_app/core/translation/message.dart';
 import 'package:quiz_app/core/unknown_route_page.dart';
 import 'package:quiz_app/ui/dashboard/dashboard_screen.dart';
+import 'package:quiz_app/ui/screens/chat_module/chat/chat_screen.dart';
+import 'package:quiz_app/ui/screens/chat_module/users/users_screen.dart';
 import 'package:quiz_app/ui/screens/home/home_screen.dart';
 import 'package:quiz_app/ui/screens/quiz/quiz_screen.dart';
 import 'package:quiz_app/ui/screens/setting/setting_screen.dart';
@@ -27,13 +29,14 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        // themeMode: Get.find<ThemeController>().themeMode.value, // ✅ controlled here
-        themeMode: Get.find<ThemeController>().themeMode, // ✅ controlled here
+        themeMode: Get.find<ThemeController>().themeMode,
         unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoutePage()),
         initialRoute: '/',
         getPages: [
           GetPage(name: '/', page: () => DashboardScreen()),
           GetPage(name: '/homeScreenRoute', page: () => HomeScreen()),
+          GetPage(name: '/usersScreenRoute', page: () => UsersScreen()),
+          GetPage(name: '/chatScreenRoute', page: () => ChatScreen()),
           GetPage(name: '/settingScreenRoute', page: () => SettingScreen()),
           GetPage(name: '/quizScreenRoute', page: () => QuizScreen()),
         ],

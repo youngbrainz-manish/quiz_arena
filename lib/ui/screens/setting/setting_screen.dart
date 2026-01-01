@@ -5,7 +5,7 @@ import 'package:quiz_app/core/translation/translation_keys.dart';
 import 'setting_controller.dart';
 
 class SettingScreen extends GetView<SettingController> {
-  SettingScreen({super.key});
+  const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class SettingScreen extends GetView<SettingController> {
     final themeController = Get.find<ThemeController>();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Setting Screen", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+        title: Text("Setting Screen", style: TextStyle().copyWith(fontSize: 22, fontWeight: FontWeight.bold)),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -31,13 +31,18 @@ class SettingScreen extends GetView<SettingController> {
             Obx(() {
               return Card(
                 child: ListTile(
+                  contentPadding: EdgeInsets.only(left: 8, right: 8),
                   leading: CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text((settingController.selectedLanguage['code'] ?? '')),
+                      child: Text(
+                        (settingController.selectedLanguage['code'] ?? ''),
+                        style: TextStyle().copyWith(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                      ),
                     ),
                   ),
-                  title: Text(TranslationKeys.changeLanguage.tr),
+                  title: Text(TranslationKeys.changeLanguage.tr, style: TextStyle().copyWith(fontSize: 18)),
                   trailing: _languageDropdown(),
                   subtitle: _selectedLanguageText(),
                 ),
@@ -47,20 +52,28 @@ class SettingScreen extends GetView<SettingController> {
             Obx(() {
               return Card(
                 child: ListTile(
+                  contentPadding: EdgeInsets.only(left: 8, right: 8),
                   leading: CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Icon(themeController.isDark.value == true ? Icons.dark_mode : Icons.sunny),
+                      child: Icon(
+                        themeController.isDark.value == true ? Icons.dark_mode : Icons.sunny,
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
                     ),
                   ),
-                  title: Text(TranslationKeys.changeTheme.tr, style: TextStyle(fontSize: 22)),
+                  title: Text(TranslationKeys.changeTheme.tr, style: TextStyle().copyWith(fontSize: 18)),
                   trailing: Switch(
                     value: themeController.isDark.value,
                     onChanged: (value) {
                       themeController.toggleTheme();
                     },
                   ),
-                  subtitle: Text(themeController.isDark.value == true ? 'Dark Theme' : "Light Theme"),
+                  subtitle: Text(
+                    themeController.isDark.value == true ? 'Dark Theme' : "Light Theme",
+                    style: TextStyle().copyWith(fontSize: 12),
+                  ),
                 ),
               );
             }),
@@ -95,10 +108,14 @@ class SettingScreen extends GetView<SettingController> {
         children: [
           Text(
             "${TranslationKeys.selected.tr} ${TranslationKeys.language.tr}",
-            style: TextStyle(fontSize: 13),
+            style: TextStyle().copyWith(fontSize: 12),
             textAlign: TextAlign.center,
           ),
-          Text(" ${controller.selectedLanguage['name']}", style: TextStyle(fontSize: 15), textAlign: TextAlign.center),
+          Text(
+            " ${controller.selectedLanguage['name']}",
+            style: TextStyle().copyWith(fontSize: 14),
+            textAlign: TextAlign.center,
+          ),
         ],
       );
     });

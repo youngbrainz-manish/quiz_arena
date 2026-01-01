@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:quiz_app/core/app_colors.dart';
 
 class CommonButtons {
-  Widget textButton({void Function()? onTap, required String title, Color? buttonColor}) {
+  Widget textButton({void Function()? onTap, required String title, Color? buttonColor, double? width}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -11,7 +11,7 @@ class CommonButtons {
           borderRadius: BorderRadius.circular(8),
         ),
         height: 40,
-        width: 100,
+        width: width ?? 100,
         child: Center(
           child: Text(
             title,
